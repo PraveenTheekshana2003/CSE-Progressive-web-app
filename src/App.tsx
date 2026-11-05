@@ -9,6 +9,9 @@ import PortfolioPage from './pages/PortfolioPage'
 import SettingsPage from './pages/SettingsPage'
 import AboutPage from './pages/AboutPage'
 import StockDetailPage from './pages/StockDetailPage'
+import EducationPage from './pages/EducationPage'
+import LessonDetailPage from './pages/LessonDetailPage'
+
 
 function App() {
   return (
@@ -23,6 +26,8 @@ function App() {
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/education" element={<EducationPage />} />
+          <Route path="/education/:lessonId" element={<LessonDetailPage />} />
         </Route>
 
         {/* Stock Detail without bottom navigation */}

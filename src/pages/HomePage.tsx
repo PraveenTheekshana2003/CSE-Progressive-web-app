@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom'
+import { GraduationCap } from 'lucide-react'
+
 function HomePage() {
   return (
     <div className="p-5 max-w-lg mx-auto">
@@ -62,7 +65,16 @@ function HomePage() {
       <div>
         <div className="flex justify-between items-center mb-3">
           <h2 className="font-semibold text-white">Recommended for You</h2>
-          <span className="text-sm text-emerald-400 font-medium">See all</span>
+          <Link
+            to="/education"
+            className="mt-6 flex items-center gap-3 rounded-2xl border border-slate-800 bg-slate-900 p-4"
+          >
+            <GraduationCap className="size-6 shrink-0 text-emerald-400" />
+            <div>
+              <p className="font-semibold text-white">Learn to invest</p>
+              <p className="text-sm text-slate-400">Short lessons on the CSE, risk and signals</p>
+            </div>
+          </Link>
         </div>
 
         <div className="space-y-3">
