@@ -21,7 +21,7 @@ function ProfilePage() {
   }
 
   return (
-    <div className="p-5 max-w-lg mx-auto">
+    <div className="p-5 pb-24 max-w-lg mx-auto">
       <h1 className="text-2xl font-bold text-white mb-6">Profile</h1>
 
       {editing ? (

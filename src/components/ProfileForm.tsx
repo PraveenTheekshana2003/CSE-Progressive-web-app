@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { SECTORS, HORIZON_LABELS, RISK_LABELS } from '../types/profile'
 import type { InvestorProfile, Horizon, Risk } from '../types/profile'
+import RiskQuiz from './RiskQuiz'
 
 interface Props {
   initial: InvestorProfile
@@ -14,13 +15,24 @@ function ProfileForm({ initial, onSave, onCancel }: Props) {
   const [horizon, setHorizon] = useState<Horizon>(initial.horizon)
   const [sectors, setSectors] = useState<string[]>(initial.sectors)
   const [errors, setErrors] = useState<string[]>([])
+  const [showQuiz, setShowQuiz] = useState(false)
 
   function toggleSector(sector: string) {
     setSectors((prev) =>
       prev.includes(sector) ? prev.filter((s) => s !== sector) : [...prev, sector]
     )
   }
-
+  if (showQuiz) {
+    return (
+      <RiskQuiz
+        onApply={(r) => {
+          setRisk(r)
+          setShowQuiz(false)
+        }}
+        onClose={() => setShowQuiz(false)}
+      />
+    )
+  }
   function handleSubmit() {
     const problems: string[] = []
     const amount = Number(capital)
@@ -85,6 +97,13 @@ function ProfileForm({ initial, onSave, onCancel }: Props) {
             </button>
           ))}
         </div>
+        <button
+          type="button"
+          onClick={() => setShowQuiz(true)}
+          className="mt-2 text-xs text-emerald-400 hover:text-emerald-300 underline"
+        >
+          Not sure? Take the risk quiz
+        </button>
       </div>
 
       {/* Horizon */}
